@@ -1,5 +1,7 @@
 # MATLAB docker image
 
+A docker image of official MATLAB with Parallel Computing Toolbox
+
 ## Pull from dockerhub
 
 ```bash
