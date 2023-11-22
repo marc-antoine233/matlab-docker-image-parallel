@@ -1,0 +1,27 @@
+version: '3.9'
+services:
+  matlab:
+    build:
+      context: .
+    image: marcantoine153/matlab_parpool:latest
+    # shm_size at least 512m
+    shm_size: 1g
+    container_name: matlab
+    # MATLAB runing mode, More information can be found in https://hub.docker.com/r/mathworks/matlab
+    command: -browser
+    working_dir: /home/matlab/workspace
+    # volume workspace if you want to save your works
+    volumes:
+      - ./volume/workspace:/home/matlab/workspace
+    networks:
+      matlab:
+        # ip address as you like
+        ipv4_address: 10.1.1.2
+
+networks:
+  matlab:
+    name: matlab
+    ipam:
+      config:
+        # subnet as you like
+        - subnet: "10.1.1.0/24"
